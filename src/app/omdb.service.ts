@@ -23,6 +23,7 @@ export class OmdbService {
       params: new HttpParams()
         .set('s', title)
         .set('apikey', key)
+        .set('type', 'movie')
     };
 
     return this.http.get<any>(url, options).pipe(

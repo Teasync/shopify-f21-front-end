@@ -4,11 +4,13 @@ import { Movie } from '../movie.interface';
 import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { fadeAnimation, listAnimation } from '../animations';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  animations: [fadeAnimation, listAnimation]
 })
 export class DashboardComponent implements AfterViewInit {
   // @ts-ignore
@@ -54,6 +56,7 @@ export class DashboardComponent implements AfterViewInit {
   }
 
   handleSearch(event?: any): void {
+    this.movies = [];
     this.omdb.searchByTitle(this.value).subscribe((res) => {
       this.movies = res;
     });

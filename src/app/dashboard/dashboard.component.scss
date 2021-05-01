@@ -9,6 +9,7 @@
 .flex-container-inner {
   display: flex;
   flex-flow: row nowrap;
+  min-height: 542px;
 }
 
 .flex-child {

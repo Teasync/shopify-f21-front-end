@@ -14,13 +14,13 @@
     </mat-card-content>
   </mat-card>
 
-  <div class="flex-container-inner" *ngIf="value || nominations.length > 0">
+  <div class="flex-container-inner" @fadeAnimation *ngIf="value || nominations.length > 0">
     <mat-card class="flex-child-inner">
       <mat-card-title>
         <span  class="mat-h1 result-header">Results for "{{value}}"</span>
       </mat-card-title>
       <mat-card-content class="results">
-        <div class="movie-list">
+        <div class="movie-list" [@listAnimation]="movies">
           <div class="movie-list-item" *ngFor="let movie of movies">
             &#8226; &nbsp; {{movie.title}} ({{movie.year}})
             &nbsp;<button mat-stroked-button [disabled]="nominations.includes(movie)" (click)="handleNomination($event, movie)">Nominate</button>
@@ -33,7 +33,7 @@
         <span class="mat-h1 result-header">Nominations</span>
       </mat-card-title>
       <mat-card-content class="results">
-        <div class="movie-list">
+        <div class="movie-list" [@listAnimation]="nominations.length">
           <div class="movie-list-item" *ngFor="let movie of nominations">
             &#8226; &nbsp; {{movie.title}} ({{movie.year}})
             &nbsp;<button mat-stroked-button (click)="handleRemove($event, movie)">Remove</button>
