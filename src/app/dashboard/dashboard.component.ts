@@ -5,6 +5,7 @@ import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { fadeAnimation, listAnimation, listAnimationInOnly } from '../animations';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,9 +20,13 @@ export class DashboardComponent implements AfterViewInit {
   nominations: Movie[];
   value: string;
 
-  constructor(private omdb: OmdbService, private snackbar: MatSnackBar) {
+  constructor(private omdb: OmdbService, private snackbar: MatSnackBar, private cookieService: CookieService) {
     this.movies = [];
-    this.nominations = [];
+    if (cookieService.check('nominations')) {
+      this.nominations = JSON.parse(cookieService.get('nominations'));
+    } else {
+      this.nominations = [];
+    }
     this.value = '';
   }
 
@@ -39,6 +44,7 @@ export class DashboardComponent implements AfterViewInit {
   handleNomination(event: any, movie: Movie): void {
     if (this.nominations.length < 5 && !this.nominations.includes(movie)) {
       this.nominations.push(movie);
+      this.cookieService.set('nominations', JSON.stringify(this.nominations), {expires: 1});
     }
 
     if (this.nominations.length >= 5) {

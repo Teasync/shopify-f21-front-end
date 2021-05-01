@@ -16,7 +16,7 @@
 
   <div class="flex-container-inner" @fadeAnimation *ngIf="value || nominations.length > 0">
     <mat-card class="flex-child-inner">
-      <mat-card-title>
+      <mat-card-title @fadeAnimation *ngIf="value">
         <span  class="mat-h1 result-header">Results for "{{value}}"</span>
       </mat-card-title>
       <mat-card-content class="results">
