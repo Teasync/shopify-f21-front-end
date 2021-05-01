@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { OmdbService } from '../omdb.service';
+import { OmdbService } from '../services/omdb.service';
 import { Movie } from '../movie.interface';
 import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
