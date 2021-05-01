@@ -1,0 +1,48 @@
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 1024px;
+  max-width: 60vw;
+  margin: auto;
+}
+
+.flex-container-inner {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.flex-child {
+  margin: 20px 0;
+}
+
+.movie-list-item {
+  margin: 10px 0;
+  font-size: 12pt;
+}
+
+.flex-child-inner {
+  flex-grow: 1;
+  flex-basis: 0;
+  margin: 0 10px;
+  padding: 20px;
+  &:first-of-type {
+    margin-left: 0;
+  }
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.result-header {
+  font-size: 16pt;
+}
+
+.search-container {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.title {
+  margin: 40px 5px 0px;
+  font-weight: bold;
+}
