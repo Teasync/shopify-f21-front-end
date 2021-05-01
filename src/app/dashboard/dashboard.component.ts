@@ -4,13 +4,13 @@ import { Movie } from '../movie.interface';
 import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { fadeAnimation, listAnimation } from '../animations';
+import { fadeAnimation, listAnimation, listAnimationInOnly } from '../animations';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  animations: [fadeAnimation, listAnimation]
+  animations: [fadeAnimation, listAnimation, listAnimationInOnly]
 })
 export class DashboardComponent implements AfterViewInit {
   // @ts-ignore

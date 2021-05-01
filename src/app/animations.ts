@@ -14,6 +14,19 @@ export const listAnimation = trigger('listAnimation', [
     query(':enter',
       [style({opacity: 0}), stagger('10ms', animate('150ms ease-out', style({opacity: 1})))],
       {optional: true}
+    ),
+    query(':leave',
+      animate('150ms', style({opacity: 0})),
+      {optional: true}
+    )
+  ])
+]);
+
+export const listAnimationInOnly = trigger('listAnimationInOnly', [
+  transition('* <=> *', [
+    query(':enter',
+      [style({opacity: 0}), stagger('10ms', animate('150ms ease-out', style({opacity: 1})))],
+      {optional: true}
     )
   ])
 ]);
