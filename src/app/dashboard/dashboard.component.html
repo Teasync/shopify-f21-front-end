@@ -23,7 +23,7 @@
         <div class="movie-list">
           <div class="movie-list-item" *ngFor="let movie of movies">
             &#8226; &nbsp; {{movie.title}} ({{movie.year}})
-            &nbsp;<button mat-stroked-button (click)="handleNomination($event, movie)">Nominate</button>
+            &nbsp;<button mat-stroked-button [disabled]="nominations.includes(movie)" (click)="handleNomination($event, movie)">Nominate</button>
           </div>
         </div>
       </mat-card-content>
